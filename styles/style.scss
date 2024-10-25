@@ -1,0 +1,112 @@
+@import 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $body_font_family;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: $body_bg_color;
+    min-height: 100vh;
+    @include display(flex, center, center, row);
+
+    .container {
+        background-color: $container_bg_color;
+        width: $container_width;
+        height: $container_height;
+        padding: 4rem;
+        display: flex;
+        box-shadow: $container_bg_color;
+
+        form {
+            width: 50%;
+            @include display(flex, space-around, none, column);
+            text-align: center;
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            input[type=email],
+            input[type=password] {
+                padding: 1.2rem;
+                font-size: 1.8rem;
+                border: transparent;
+                transition: border-radius .6s ease;
+
+                &:focus {
+                    border-radius: 1rem;
+                    outline: $input_focus_border;
+                }
+            }
+
+            button {
+                padding: 1.2rem;
+                cursor: pointer;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                font-weight: $button_font_weight;
+                letter-spacing: .4rem;
+                background-color: $button_bg_color;
+                color: hsl(0, 0, 100%);
+                border: transparent;
+                transition: background-color .4s ease;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $button_hover_color;
+                    outline: $button_border;
+                }
+            }
+
+            .user_suport_area {
+                height: 3.5rem;
+                @include display(flex, space-around, center, row);
+                font-size: 1.8rem;
+
+                a {
+                    text-decoration: none;
+                    color: $user_suport_area_links_color;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .social_buttons {
+                @include display(flex, space-between, center, row);
+                font-size: 2rem;
+
+                button {
+                    @include display(flex, center, center, row);
+                    font-size: 2rem;
+                    width: 16rem;
+                    border: $button_border;
+                    border-radius: 4rem;
+                    height: 5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 100% !important;
+
+        .social_buttons {
+            gap: 2rem;
+        }
+    }
+
+    img {
+        display: none;
+    }
+}
